@@ -1,0 +1,9 @@
+#BSUB -G SEAS-Lab-Vorobeychik
+#BSUB -o debug_AT_LATE_JOINT.txt
+#BSUB -R "select[type==any]"
+#BSUB -gpu "num=1:gmem=10.9G"
+#BSUB -N
+#BSUB -J 2ADV_LATE_JOINT
+
+source activate mmlab 
+python tools/train.py configs/waymo_open/mosaic/2adv_yolov4m_late_lr0001_joint.py --adv_train --resume-from work_dirs/2adv_yolov4m_late_lr0001_joint/latest.pth

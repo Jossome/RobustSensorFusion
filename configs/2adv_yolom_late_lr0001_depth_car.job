@@ -1,0 +1,7 @@
+#BSUB -R "select[type==any]"
+#BSUB -gpu "num=1:gmodel=TITANXp:gmem=11G"
+#BSUB -N
+#BSUB -J 2ADV_LATE_DEPTH_CAR
+
+source activate mmlab 
+python tools/train.py configs/waymo_open/mosaic/2adv_yolov4m_late_lr0001_depth_car.py --adv_train # --resume-from work_dirs/2adv_yolov4m_late_lr0001_depth_car/latest.pth
